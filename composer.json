@@ -8,6 +8,7 @@
 			"email": "milan.pala@peckadesign.cz"
 		}
 	],
+	"minimum-stability": "beta",
 	"require": {
 		"php": "7.1.*|7.2.*",
 		"pd/security-headers": "v1.0.*",
