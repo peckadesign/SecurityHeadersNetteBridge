@@ -28,6 +28,9 @@
 	"autoload-dev": {
 		"psr-4": {
 			"PdTests\\SecurityHeaders\\": "tests"
-		}
+		},
+		"files": [
+			"tests/functions.php"
+		]
 	}
 }
