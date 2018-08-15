@@ -16,13 +16,29 @@ class ExtensionTest extends \Tester\TestCase
 
 		$extension->setConfig([]);
 
+		$httpExtension = new \Nette\Bridges\HttpDI\HttpExtension();
+		$applicationExtension = new \Nette\Bridges\ApplicationDI\ApplicationExtension();
+		$routingExtension = new \Nette\Bridges\ApplicationDI\RoutingExtension();
+
 		$compiler = new \Nette\DI\Compiler();
 		$compiler->addExtension('test', $extension);
+		$compiler->addExtension('http', $httpExtension);
+		$compiler->addExtension('application', $applicationExtension);
+		$compiler->addExtension('routing', $routingExtension);
 
-		$cb = function () use ($compiler): void {
-			createContainer($compiler);
-		};
-		\Tester\Assert::exception($cb, \InvalidArgumentException::class);
+		$container = createContainer($compiler, ['services' => [['factory' => HeadersFactory::class]]]);
+
+		$listener = $container->getByType(\Pd\SecurityHeaders\DI\IOnPresenterListener::class);
+		\Tester\Assert::equal(\Pd\SecurityHeaders\DI\HeadersSetup::class, \get_class($listener));
+	}
+
+}
+
+class HeadersFactory implements \Pd\SecurityHeaders\DI\IHeadersFactory {
+
+	public function getHeaders(): array
+	{
+
 	}
 
 }

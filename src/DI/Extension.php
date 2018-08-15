@@ -8,7 +8,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 	/**
 	 * @var string
 	 */
-	private $presenterHook;
+	private $presenterHook = HeadersSetup::class;
 
 
 	public function loadConfiguration()
@@ -17,11 +17,13 @@ final class Extension extends \Nette\DI\CompilerExtension
 
 		$config = $this->getConfig();
 
-		if ( ! isset($config['presenterHook'])) {
-			throw new \InvalidArgumentException(\sprintf('Extension "%s" nemá nastavenou hodnotu "presenterHook"', $this->name));
+		if (isset($config['presenterHook'])) {
+			$this->presenterHook = $config['presenterHook'];
 		}
 
-		$this->presenterHook = $config['presenterHook'];
+		if ($this->presenterHook instanceof IOnPresenterListener) {
+			throw new \InvalidArgumentException(\sprintf('Hook presenteru musí implementovat rozhraní "%s"', IOnPresenterListener::class));
+		}
 	}
 
 
@@ -29,8 +31,10 @@ final class Extension extends \Nette\DI\CompilerExtension
 	{
 		$containerBuilder = $this->getContainerBuilder();
 
-		$presenterHookType = $containerBuilder->getByType(\substr($this->presenterHook, 1));
-		$presenterHook = $containerBuilder->getDefinition($presenterHookType);
+		$presenterHook = $containerBuilder
+			->addDefinition($this->prefix('presenterHook'))
+			->setFactory($this->presenterHook)
+		;
 
 		$applicationType = $containerBuilder->getByType(\Nette\Application\Application::class);
 		$application = $containerBuilder->getDefinition($applicationType);
