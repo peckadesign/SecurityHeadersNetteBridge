@@ -24,7 +24,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 		$presenterHookReflection = new \ReflectionClass($this->presenterHook);
 
 		if ( ! $presenterHookReflection->implementsInterface(IOnPresenterListener::class)) {
-			throw new \InvalidArgumentException(\sprintf('Hook presenteru musí implementovat rozhraní "%s"', IOnPresenterListener::class));
+			throw new \RuntimeException(\sprintf('Hook presenteru musí implementovat rozhraní "%s"', IOnPresenterListener::class));
 		}
 	}
 
