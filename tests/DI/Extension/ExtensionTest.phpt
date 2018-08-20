@@ -4,10 +4,7 @@ namespace PdTests\SecurityHeaders\DI\Extension;
 
 require __DIR__ . '/../../bootstrap.php';
 
-/**
- * @testCase
- */
-class ExtensionTest extends \Tester\TestCase
+final class ExtensionTest extends \Tester\TestCase
 {
 
 	public function testWithoutHook()
