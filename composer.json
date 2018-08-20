@@ -10,7 +10,7 @@
 	],
 	"require": {
 		"php": "7.1.*|7.2.*",
-		"pd/security-headers": "v1.0.*@beta",
+		"pd/security-headers": "v1.0.*",
 		"nette/di": "2.3.*|2.4.*",
 		"nette/application": "2.3.*|2.4.*"
 	},
