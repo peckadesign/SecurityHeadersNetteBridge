@@ -1,0 +1,36 @@
+{
+	"name": "pd/security-headers-nette-bridge",
+	"type": "library",
+	"description": "Napojení knihovny pro snadné nastavení bezpečnostních HTTP hlaviček do Nette",
+	"authors": [
+		{
+			"name": "Milan Pála",
+			"email": "milan.pala@peckadesign.cz"
+		}
+	],
+	"require": {
+		"php": "7.1.*|7.2.*",
+		"pd/security-headers": "v1.0.*",
+		"nette/di": "2.3.*|2.4.*",
+		"nette/application": "2.3.*|2.4.*"
+	},
+	"require-dev": {
+		"nette/tester": "2.0.*",
+		"pd/coding-standard": "1.13.*",
+		"phpstan/phpstan": "0.10.*",
+		"nette/http": "2.3.*|2.4.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Pd\\SecurityHeaders\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"PdTests\\SecurityHeaders\\": "tests"
+		},
+		"files": [
+			"tests/functions.php"
+		]
+	}
+}

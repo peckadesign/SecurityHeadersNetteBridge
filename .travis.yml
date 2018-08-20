@@ -1,0 +1,21 @@
+language: php
+
+php:
+    - 7.1
+    - 7.2
+
+script:
+    - composer validate
+    - vendor/bin/phpcs src/ tests/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandard/ruleset.xml
+    - vendor/bin/phpcs src/ tests/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandardStrict/ruleset.xml
+    - vendor/bin/phpstan analyse --level 7 src/ tests/
+    - vendor/bin/tester tests/
+
+before_script:
+    - composer install --no-interaction --prefer-dist
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
