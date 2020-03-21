@@ -6,7 +6,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 {
 
 	/**
-	 * @var string
+	 * @var class-string
 	 */
 	private $presenterHook = HeadersSetup::class;
 
