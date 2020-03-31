@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-return \call_user_func(function () {
+return \call_user_func(static function () {
 	require_once __DIR__ . '/../vendor/autoload.php';
 
 	if ( ! \class_exists('Tester\Assert')) {
