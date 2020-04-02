@@ -4,6 +4,10 @@ namespace Pd\SecurityHeaders\DI;
 
 final class HeadersSetup implements IOnPresenterListener
 {
+	/**
+	 * @var bool
+	 */
+	private $headersSent = FALSE;
 
 	/**
 	 * @var IHeadersFactory
@@ -28,9 +32,15 @@ final class HeadersSetup implements IOnPresenterListener
 		if (\PHP_SAPI === 'cli') {
 			return;
 		}
+		
+		if ($this->headersSent) {
+			return;
+		}
 
 		foreach ($this->factory->getHeaders() as $header) {
 			$this->response->addHeader($header->getName(), $header->getValue());
 		}
+		
+		$this->headersSent = TRUE;
 	}
 }
