@@ -15,6 +15,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 	{
 		parent::loadConfiguration();
 
+		/** @var array<mixed> $config */
 		$config = $this->getConfig();
 
 		if (isset($config['presenterHook'])) {
@@ -39,6 +40,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 		;
 
 		$applicationType = $containerBuilder->getByType(\Nette\Application\Application::class);
+		/** @var \Nette\DI\Definitions\ServiceDefinition $application */
 		$application = $containerBuilder->getDefinition($applicationType);
 		$application->addSetup('?->onPresenter[] = ?', ['@self', [$presenterHook, 'onPresenter']]);
 	}

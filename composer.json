@@ -11,14 +11,13 @@
 	"require": {
 		"php": "^7.1",
 		"pd/security-headers": "^1.0",
-		"nette/di": "2.3.*|2.4.*",
-		"nette/application": "2.3.*|2.4.*"
+		"nette/di": "~3.0.0",
+		"nette/application": "~3.0"
 	},
 	"require-dev": {
 		"nette/tester": "~2.3.2",
 		"pd/coding-standard": "1.21.*",
-		"phpstan/phpstan": "0.12.76",
-		"nette/http": "2.3.*|2.4.*"
+		"phpstan/phpstan": "0.12.76"
 	},
 	"autoload": {
 		"psr-4": {
