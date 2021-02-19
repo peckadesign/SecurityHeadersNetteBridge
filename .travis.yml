@@ -10,7 +10,7 @@ script:
     - composer validate
     - vendor/bin/phpcs src/ tests/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandard/ruleset.xml
     - vendor/bin/phpcs src/ tests/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandardStrict/ruleset.xml
-    - vendor/bin/phpstan analyse --level 7 src/ tests/
+    - vendor/bin/phpstan analyse --level 8 src/ tests/
     - vendor/bin/tester tests/
 
 before_script:
