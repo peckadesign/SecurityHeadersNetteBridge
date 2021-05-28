@@ -39,9 +39,8 @@ final class Extension extends \Nette\DI\CompilerExtension
 			->setFactory($this->presenterHook)
 		;
 
-		$applicationType = $containerBuilder->getByType(\Nette\Application\Application::class);
 		/** @var \Nette\DI\Definitions\ServiceDefinition $application */
-		$application = $containerBuilder->getDefinition($applicationType);
+		$application = $containerBuilder->getDefinitionByType(\Nette\Application\Application::class);
 		$application->addSetup('?->onPresenter[] = ?', ['@self', [$presenterHook, 'onPresenter']]);
 	}
 
