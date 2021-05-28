@@ -9,15 +9,15 @@
 		}
 	],
 	"require": {
-		"php": "^7.1",
-		"pd/security-headers": "^1.0",
+		"php": "^7.4 | ^8.0",
+		"pd/security-headers": "^1.2.0",
 		"nette/di": "~3.0.0",
 		"nette/application": "~3.0"
 	},
 	"require-dev": {
-		"nette/tester": "~2.3.2",
-		"pd/coding-standard": "1.21.*",
-		"phpstan/phpstan": "0.12.76"
+		"nette/tester": "~2.4.0",
+		"pd/coding-standard": "1.27.2",
+		"phpstan/phpstan": "0.12.88"
 	},
 	"autoload": {
 		"psr-4": {
