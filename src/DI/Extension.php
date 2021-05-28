@@ -8,7 +8,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 	/**
 	 * @var class-string
 	 */
-	private $presenterHook = HeadersSetup::class;
+	private string $presenterHook = HeadersSetup::class;
 
 
 	public function loadConfiguration()
@@ -30,7 +30,7 @@ final class Extension extends \Nette\DI\CompilerExtension
 	}
 
 
-	public function beforeCompile()
+	public function beforeCompile(): void
 	{
 		$containerBuilder = $this->getContainerBuilder();
 
