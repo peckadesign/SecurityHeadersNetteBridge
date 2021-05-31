@@ -4,23 +4,15 @@ namespace Pd\SecurityHeaders\DI;
 
 final class HeadersSetup implements IOnPresenterListener
 {
-	/**
-	 * @var bool
-	 */
-	private $headersSent = FALSE;
 
-	/**
-	 * @var IHeadersFactory
-	 */
-	private $factory;
+	private bool $headersSent = FALSE;
 
-	/**
-	 * @var \Nette\Http\IResponse
-	 */
-	private $response;
+	private \Pd\SecurityHeaders\DI\IHeadersFactory $factory;
+
+	private \Nette\Http\IResponse $response;
 
 
-	public function __construct(IHeadersFactory $factory, \Nette\Http\IResponse $response)
+	public function __construct(\Pd\SecurityHeaders\DI\IHeadersFactory $factory, \Nette\Http\IResponse $response)
 	{
 		$this->factory = $factory;
 		$this->response = $response;
@@ -32,7 +24,7 @@ final class HeadersSetup implements IOnPresenterListener
 		if (\PHP_SAPI === 'cli') {
 			return;
 		}
-		
+
 		if ($this->headersSent) {
 			return;
 		}
@@ -40,7 +32,8 @@ final class HeadersSetup implements IOnPresenterListener
 		foreach ($this->factory->getHeaders() as $header) {
 			$this->response->addHeader($header->getName(), $header->getValue());
 		}
-		
+
 		$this->headersSent = TRUE;
 	}
+
 }
