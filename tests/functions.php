@@ -10,5 +10,8 @@ function createContainer(\Nette\DI\Compiler $source, array $config = []): \Nette
 	$code = $source->addConfig($config)->setClassName($class)->compile();
 	eval($code);
 
-	return new $class();
+	/** @var \Nette\DI\Container $container */
+	$container = new $class();
+
+	return $container;
 }
